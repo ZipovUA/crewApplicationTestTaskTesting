@@ -1,6 +1,6 @@
 class EmployeeCard{
-    constructor(parentLocator, number = 1){
-        this.containerLocator = `${parentLocator} .CrewMember-container:nth-child(${number+1})`;
+    constructor(parentLocator, number = 1){        
+        this.containerLocator = parentLocator.indexOf('.CrewMember-container') > -1 ? parentLocator : `${parentLocator} .CrewMember-container:nth-child(${number+1})`;
         this.photo = `${this.containerLocator} .CrewMemeber-photo`;
         this.name = `${this.containerLocator} .CrewMemeber-name div:nth-child(1)`;
         this.city = `${this.containerLocator} .CrewMemeber-name div:nth-child(2)`;

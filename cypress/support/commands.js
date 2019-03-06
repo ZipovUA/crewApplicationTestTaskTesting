@@ -34,43 +34,12 @@ Cypress.Commands.add('filterEmployees', (name, city) => {
 });
 
 Cypress.Commands.add('getEmployeeCardByName', (columnName, employeeName) =>{
-    let resultCardElement = null;
     debugger
-    //const allCardsInColumn = cy.get('.CrewMember-container')//commonPage.dataContainer.columns[columnName].getAll();
-    //
-    
-    //cy.get(allCardsInColumn[0].selector).debug();
-    //cy.log(`allCardsInCOlumn length -> ${allCardsInColumn.length}`);
-    /*
-    for (let i=0; i< allCardsInColumn.length; i++){
-        const currentEl = new EmployeeCard(allCardsInColumn[i].selector);
-        cy.get(currentEl.name).debug();
-        if (cy.get(currentEl.name).should('contain', employeeName)) resultCardElement = currentEl;
-    }
-    */
-    
-   debugger
-   /*
-   cy.get('.CrewMember-container').each((el, inex, list)=>{
-        
-        const currentEl = new EmployeeCard(el.getSelector());
-        currentEl.debug();
-        //if (currentEl.find(currentEl.name == employeeName))
-    });
-    */
-   /*
-    $(`.App-column:nth-child(1) .CrewMember-container`).each((i)=>{
-        const currentCard = new EmployeeCard(commonPage.dataContainer.columns.applied[i]);
-        currentCard.debug();
-        if ($(currentCard.name).text() === employeeName) resultCardElement = currentCard;
-    })
-    */
-   return resultCardElement;
+    const selector = `${dataColumns[columnName].containerLocator} .CrewMember-container:has(.CrewMemeber-name div:nth-child(1):contains(${employeeName}))`;
+    return new EmployeeCard(selector);   
 })
 
 Cypress.Commands.add('getEmployeeCardByCity', (columnName, employeeCity) =>{
-    let resultCardElement = null;
-    // here should be implementation but I can not figure out how to use cycle in cypress.
-    // All options return chain element
-    return resultCardElement;
+    const selector = `${dataColumns[columnName].containerLocator} .CrewMember-container:has(.CrewMemeber-name div:nth-child(2):contains(${employeeCity}))`;
+    return new EmployeeCard(selector);   
 })

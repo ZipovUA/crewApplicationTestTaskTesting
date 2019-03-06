@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe('Check Filter', function(){
+describe('Check Filter', () => {
     const page = require('../support/pageObjects/inex');
 
     before( () =>{
@@ -11,7 +11,7 @@ describe('Check Filter', function(){
         cy.get(page.filterPanel.clearButton).click();
     })
 
-    it('Filter by name', function(){
+    it('Filter by name', () => {
         cy.filterEmployees('emma');
         
         cy.log(`searched object is -> ${page.dataContainer.columns.applied}`);
@@ -25,7 +25,7 @@ describe('Check Filter', function(){
 
     });
 
-    it('Filter by city', function(){
+    it('Filter by city', () => {
         cy.filterEmployees(null, 'worcester');
         
         cy.get(page.dataContainer.columns.applied.first.name)
@@ -35,7 +35,7 @@ describe('Check Filter', function(){
         .should('have.text', 'worcester');
     });
 
-    it('Filter by name and city', function(){
+    it('Filter by name and city', () => {
         cy.filterEmployees('emma', 'worcester');
         
         cy.get(page.dataContainer.columns.applied.first.name)
