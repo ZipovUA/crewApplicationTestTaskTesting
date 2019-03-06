@@ -45,16 +45,5 @@ describe('Check employee card navigation', function(){
         
         cy.get(dataColumns.applied.first.name)
         .should('have.text', 'danielle moore');
-    });
-
-    it.only('find card" yemployee name', function(){
-        debugger
-        let elementText = 'someVal';
-        elementText = cy.get(dataColumns.applied.first.name)
-        .invoke('text')
-        .then((text)=>{
-            return text;
-        });
-        cy.log(elementText);
-    })
+    });    
 });

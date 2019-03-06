@@ -34,9 +34,10 @@ Cypress.Commands.add('filterEmployees', (name, city) => {
 });
 
 Cypress.Commands.add('getEmployeeCardByName', (columnName, employeeName) =>{
+    let resultCardElement = null;
     debugger
     //const allCardsInColumn = cy.get('.CrewMember-container')//commonPage.dataContainer.columns[columnName].getAll();
-    //let resultCardElement = null;
+    //
     
     //cy.get(allCardsInColumn[0].selector).debug();
     //cy.log(`allCardsInCOlumn length -> ${allCardsInColumn.length}`);
@@ -49,16 +50,27 @@ Cypress.Commands.add('getEmployeeCardByName', (columnName, employeeName) =>{
     */
     
    debugger
+   /*
    cy.get('.CrewMember-container').each((el, inex, list)=>{
         
         const currentEl = new EmployeeCard(el.getSelector());
         currentEl.debug();
         //if (currentEl.find(currentEl.name == employeeName))
     });
-    
+    */
+   /*
+    $(`.App-column:nth-child(1) .CrewMember-container`).each((i)=>{
+        const currentCard = new EmployeeCard(commonPage.dataContainer.columns.applied[i]);
+        currentCard.debug();
+        if ($(currentCard.name).text() === employeeName) resultCardElement = currentCard;
+    })
+    */
    return resultCardElement;
 })
 
 Cypress.Commands.add('getEmployeeCardByCity', (columnName, employeeCity) =>{
-
+    let resultCardElement = null;
+    // here should be implementation but I can not figure out how to use cycle in cypress.
+    // All options return chain element
+    return resultCardElement;
 })
